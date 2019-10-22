@@ -6,7 +6,7 @@ const AdditionalFeature = props => {
   const buyItem = e => {
     // dipsatch an action here to add an item
     e.preventDefault();
-    props.addFeature();
+    props.addFeature(e.target.value);
     console.log(e.target.value);
   };
 

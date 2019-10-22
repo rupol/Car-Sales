@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addFeature, removeFeature } from "./actions/feature";
 
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
@@ -22,20 +20,4 @@ const App = () => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    additionalPrice: state.additionalPrice,
-    car: state.car,
-    additionalFeatures: state.additionalFeatures
-  };
-}
-
-const mapDispatchToProps = {
-  addFeature,
-  removeFeature
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

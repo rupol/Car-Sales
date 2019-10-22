@@ -21,7 +21,14 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_FEATURE:
       return {
-        ...state
+        ...state,
+        car: {
+          ...state.car,
+          features: [
+            ...state.car.features,
+            state.additionalFeatures[action.payload - 1]
+          ]
+        }
       };
     case REMOVE_FEATURE:
       return {
