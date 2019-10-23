@@ -31,8 +31,15 @@ export function reducer(state = initialState, action) {
         }
       };
     case REMOVE_FEATURE:
+      console.log(action.payload);
       return {
-        ...state
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            feature => feature.id !== action.payload
+          )
+        }
       };
     case UPDATE_PRICE:
       return {
