@@ -1,22 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeFeature } from "../actions/feature";
+import { removeFeature, updatePrice } from "../actions/feature";
 
 const AddedFeature = props => {
-  const removeFeature = e => {
-    // dispatch an action here to remove an item
-    e.preventDefault();
-    props.removeFeature(e.target.value);
-    console.log(props.car.features);
-  };
+  // const removeFeature = e => {
+  //   // dispatch an action here to remove an item
+  //   e.preventDefault();
+  //   props.removeFeature(e.target.value);
+  //   console.log(props.car.features);
+  // };
 
   return (
     <li>
       {/* Add an onClick to run a function to remove a feature */}
       <button
-        onClick={removeFeature}
+        onClick={() => {
+          props.removeFeature(props.feature.id);
+          props.updatePrice();
+        }}
         className="button"
-        value={props.feature.id}
       >
         X
       </button>
@@ -34,7 +36,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  removeFeature
+  removeFeature,
+  updatePrice
 };
 
 export default connect(
