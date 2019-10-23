@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addFeature, removeFeature } from "../actions/feature";
+import { addFeature, updatePrice } from "../actions/feature";
 
 const AdditionalFeature = props => {
   const buyItem = e => {
     // dipsatch an action here to add an item
     e.preventDefault();
     props.addFeature(e.target.value);
-    console.log(e.target.value);
+    props.updatePrice();
+    console.log(props.car.features);
   };
 
   return (
@@ -31,7 +32,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   addFeature,
-  removeFeature
+  updatePrice
 };
 
 export default connect(

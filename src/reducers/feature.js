@@ -1,4 +1,4 @@
-import { ADD_FEATURE, REMOVE_FEATURE } from "../actions/feature";
+import { ADD_FEATURE, REMOVE_FEATURE, UPDATE_PRICE } from "../actions/feature";
 
 export const initialState = {
   additionalPrice: 0,
@@ -7,7 +7,7 @@ export const initialState = {
     name: "2019 Ford Mustang",
     image:
       "https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg",
-    features: [{ id: 1, name: "V-6 engine", price: 1500 }]
+    features: []
   },
   additionalFeatures: [
     { id: 1, name: "V-6 engine", price: 1500 },
@@ -33,6 +33,13 @@ export function reducer(state = initialState, action) {
     case REMOVE_FEATURE:
       return {
         ...state
+      };
+    case UPDATE_PRICE:
+      return {
+        ...state,
+        additionalPrice: state.car.features.reduce((acc, value) => {
+          return acc + value.price;
+        }, 0)
       };
     default:
       return state;
